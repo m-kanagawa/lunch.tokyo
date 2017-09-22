@@ -27,9 +27,6 @@
     <div class="btn01">
       <p><a href="https://lunch.tokyo/" target="_blank" title="東京ランチ">東京ランチはこちら</a></p>
     </div>
-
-
-     <div id="feed">aa<!-- この位置に挿入される --></div>
   </div>
   <p class="scroll"><a href="#sec03"><span></span>Places I've been to</a></p>
 </section>
@@ -42,28 +39,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="lib/js/fitie.js"></script>
 <script src="lib/js/common.js"></script>
-<script type="text/javascript">
-   //読み込み最大記事数
-   var max_length = 5; 
-
-  $(function(){
-    $.getJSON("https://query.yahooapis.com/v1/public/yql?callback=?", {
-      q: "select * from rss where url='https://news.yahoo.co.jp/pickup/rss.xml'",
-      format: "json"
-    }, function(json) {
-      for (var i = 0; i < json.query.results.item.length; i++) {
-        if(i == max_length) break;
-
-        var entry = json.query.results.item[i];
-
-        var title = entry.title;//記事タイトル
-        var link = entry.link; //記事へのリンク
-        //タイトルを挿入
-        $('#feed').append("<li><a href='" + link  +"'>"+ title +"</a></li>"); 
-
-      }
-    });
-  });
-</script>
 </body>
 </html>
