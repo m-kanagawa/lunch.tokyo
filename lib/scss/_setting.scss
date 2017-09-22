@@ -1,0 +1,41 @@
+@charset "utf-8";
+// ===================================================================
+// 設定
+// ===================================================================
+
+
+// ベースフォント
+$base_font: Avenir , "Open Sans" , "Helvetica Neue" , Helvetica , Arial , Verdana , Roboto , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "Meiryo UI" , "メイリオ" , Meiryo , "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif;
+
+$Mplus_font: "Mplus 1p"; //日本語
+$Sawarabi_font: "Sawarabi Mincho"; //日本語
+
+.mplus_font {
+  font-family: $Mplus_font;
+  font-weight: normal;
+}
+
+.Sawarabi_font {
+  font-family: $Sawarabi_font;
+  font-weight: normal;
+}
+h1, h2, h3, h4, h5, h6 {
+  @extend .mplus_font;
+}
+// ページ全体の横幅
+$base_width: 1000px;
+$sp_width: 768px;
+
+
+$base_color: #fff;		// ベースカラー
+$main_color: #a59b88;	// メインカラー
+$txt_color: #434343;	//テキストカラー
+
+
+
+
+a {text-decoration: none;}
+// a:link {}
+// a:visited {}
+a:hover {text-decoration: none;}
+// a:active {}

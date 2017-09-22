@@ -1,0 +1,128 @@
+// ===================================================================
+// コンテンツエリア
+// ===================================================================
+.sec01 {
+	position: relative;
+	height: 100vh;
+	background: rgba(#a59b88,.4);
+	.stie_logo {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-right: -50%;
+		-webkit-transform: translate(-50%, -50%); /* Safari用 */
+		transform: translate(-50%, -50%);
+	}
+	video {
+		-o-object-fit: cover;
+		object-fit: cover;
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
+		z-index: -100;
+	}
+}
+.scroll {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+	a {
+		position: absolute;
+		bottom: 20px;
+		left: 0;
+		right: 0;
+		z-index: 2;
+		display: inline-block;
+		-webkit-transform: translate(0, -20%);
+		transform: translate(0, -20%);
+		padding-top: 70px;
+		color: #fff;
+		font-weight: 100;
+		span {
+			position: absolute;
+			top: 0;
+			left: 50%;
+			width: 24px;
+			height: 24px;
+			margin-left: -12px;
+			border-left: 1px solid #fff;
+			border-bottom: 1px solid #fff;
+			-webkit-transform: rotate(-45deg);
+			transform: rotate(-45deg);
+			-webkit-animation: sdb 1.5s infinite;
+			animation: sdb 1.5s infinite;
+		}
+	}
+}
+@-webkit-keyframes sdb {
+	0% {
+		-webkit-transform: rotate(-45deg) translate(0, 0);
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		-webkit-transform: rotate(-45deg) translate(-20px, 20px);
+		opacity: 0;
+	}
+	}
+	@keyframes sdb {
+	0% {
+		transform: rotate(-45deg) translate(0, 0);
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		transform: rotate(-45deg) translate(-20px, 20px);
+		opacity: 0;
+	}
+}
+.sec02 {
+	position: relative;
+	height: 100vh;
+	background: url(../img/bg01.jpg) center center / cover no-repeat fixed;
+	.sec02_inner {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-right: -50%;
+		-webkit-transform: translate(-50%, -50%); /* Safari用 */
+		transform: translate(-50%, -50%);
+		text-align: center;
+		.txt {
+			margin-bottom: 20px;
+			@include fz(16);
+		}
+	}
+}
+
+.sec03 {
+	height: 100vh;
+	iframe {
+		width: 100%;
+		height: 100vh;
+	}
+}
+
+@media only screen and (max-width: $sp_width) {
+.sec01 {
+	.stie_logo {
+		padding: 0 30px;
+	}
+}
+
+.sec02 {
+	.sec02_inner {
+		.txt {
+			@include fz(12);
+		}
+	}
+}
+}

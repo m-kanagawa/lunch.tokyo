@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>タイトル</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="lib/css/style.css">
+</head>
+<body>
+<header class="header">
+</header><!-- /header -->
+<section class="sec01">
+  <h1 class="stie_logo"><a href="https://lunch.tokyo/" target="_blank" title="東京ランチ"><img src="lib/img/logo.png" alt="東京ランチ"></a></h1>
+  <video autoplay loop poster="lib/video/01.jpg" id="bgvid">
+    <source src="lib/video/01.webm" type="video/webm">
+    <source src="lib/video/01.mp4" type="video/mp4">
+    <p>video要素がサポートされていないブラウザでご覧になっています。</p>
+  </video>
+  <p class="scroll"><a href="#sec02"><span></span>Scroll</a></p>
+</section>
+<section class="sec02" id="sec02">
+  <div class="sec02_inner">
+    <p class="txt">東京の中野区を中心に<br class="sp">美味しいランチを求めて旅するブログです。<br>
+    でもランチだけだと続かないので夜も載せます...。</p>
+    <div class="btn01">
+      <p><a href="https://lunch.tokyo/" target="_blank" title="東京ランチ">東京ランチはこちら</a></p>
+    </div>
+
+
+     <div id="feed">aa<!-- この位置に挿入される --></div>
+  </div>
+  <p class="scroll"><a href="#sec03"><span></span>Places I've been to</a></p>
+</section>
+<section class="sec03" id="sec03">
+  <iframe src="https://www.google.com/maps/d/embed?mid=1glEWzGyu5YxKq4IkWgkcIKJkNW8" width="640" height="480"></iframe>
+</section>
+<footer class="footer">
+  <p class="copyright"><small>Copyright &copy; 2017 東京ランチ All Rights Reserved.</small></p>
+</footer><!-- /footer -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="lib/js/fitie.js"></script>
+<script src="lib/js/common.js"></script>
+<script type="text/javascript">
+   //読み込み最大記事数
+   var max_length = 5; 
+
+  $(function(){
+    $.getJSON("https://query.yahooapis.com/v1/public/yql?callback=?", {
+      q: "select * from rss where url='https://news.yahoo.co.jp/pickup/rss.xml'",
+      format: "json"
+    }, function(json) {
+      for (var i = 0; i < json.query.results.item.length; i++) {
+        if(i == max_length) break;
+
+        var entry = json.query.results.item[i];
+
+        var title = entry.title;//記事タイトル
+        var link = entry.link; //記事へのリンク
+        //タイトルを挿入
+        $('#feed').append("<li><a href='" + link  +"'>"+ title +"</a></li>"); 
+
+      }
+    });
+  });
+</script>
+</body>
+</html>
