@@ -42,7 +42,7 @@
 		-webkit-transform: translate(0, -20%);
 		transform: translate(0, -20%);
 		padding-top: 70px;
-		color: #fff;
+		color: rgba(#a59b88,.9);
 		font-weight: 100;
 		span {
 			position: absolute;
@@ -51,8 +51,8 @@
 			width: 24px;
 			height: 24px;
 			margin-left: -12px;
-			border-left: 1px solid #fff;
-			border-bottom: 1px solid #fff;
+			border-left: 1px solid rgba(#a59b88,.9);
+			border-bottom: 1px solid rgba(#a59b88,.9);
 			-webkit-transform: rotate(-45deg);
 			transform: rotate(-45deg);
 			-webkit-animation: sdb 1.5s infinite;
@@ -101,6 +101,7 @@
 		.txt {
 			margin-bottom: 20px;
 			@include fz(16);
+			color: #fff;
 		}
 	}
 }
