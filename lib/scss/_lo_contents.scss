@@ -22,6 +22,8 @@
 		top: 0;
 		left: 0;
 		z-index: -100;
+		background-image: url(../video/01.jpg);
+		background-size: cover;
 	}
 }
 .scroll {
@@ -113,9 +115,12 @@
 
 @media only screen and (max-width: $sp_width) {
 .sec01 {
+	background: rgba(#a59b88,.4) url(../video/sp_01.jpg) 0 0 no-repeat;
+	background-size: cover;
 	.stie_logo {
 		padding: 0 30px;
 	}
+	video {display: none;}
 }
 
 .sec02 {
