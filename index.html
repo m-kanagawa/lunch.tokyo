@@ -10,33 +10,10 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="lib/js/fitie.js"></script>
+<script src="lib/js/yahoo_feed_api.js"></script>
 <script src="lib/js/common.js"></script>
-<script>
-//読み込み最大記事数
-   var max_length = 10;
+<script type="text/javascript">
 
-  $(function(){
-    $.getJSON("https://query.yahooapis.com/v1/public/yql?callback=?", {
-      q: "select * from rss where url='https://lunch.tokyo/feed'",
-      format: "json"
-    }, function(json) {
-      for (var i = 0; i < json.query.results.item.length; i++) {
-        if(i == max_length) break;
-
-        var entry = json.query.results.item[i];
-
-        var title = entry.title;//記事タイトル
-        var link = entry.link; //記事へのリンク
-        var fulldate = entry.date; //投稿日
-
-        date = fulldate.split('T');
-
-        //htmlを整形
-        $('#feed').append('<dl><dt>' + date[0] + '</dt><dd><a href="' + link  +'">' + title +'</dd></dl>'); 
-
-      }
-    });
-  });
 </script>
 </head>
 <body>
@@ -58,11 +35,14 @@
     <div class="btn01">
       <p><a href="https://lunch.tokyo/" target="_blank" title="東京ランチ">東京ランチはこちら</a></p>
     </div>
-    <div id="feed"><!-- この位置に挿入される --></div>
   </div>
-  <p class="scroll"><a href="#sec03"><span></span>Places I've been to</a></p>
+  <p class="scroll"><a href="#sec_feed"><span></span>Click here for articles</a></p>
 </section>
-<section class="sec03" id="sec03">
+<section class="sec_feed" id="sec_feed">
+  <div id="feed"></div>
+  <p class="scroll"><a href="#sec_area"><span></span>Places I've been to</a></p>
+</section>
+<section class="sec_area" id="sec_area">
   <iframe src="https://www.google.com/maps/d/embed?mid=1glEWzGyu5YxKq4IkWgkcIKJkNW8" width="640" height="480"></iframe>
 </section>
 <footer class="footer">
