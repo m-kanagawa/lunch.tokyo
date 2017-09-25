@@ -7,6 +7,37 @@
 <meta name="keywords" content="東京ランチはこちら,中野ランチ,新宿ランチ,中野ラーメン">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="lib/css/style.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="lib/js/fitie.js"></script>
+<script src="lib/js/common.js"></script>
+<script>
+//読み込み最大記事数
+   var max_length = 10;
+
+  $(function(){
+    $.getJSON("https://query.yahooapis.com/v1/public/yql?callback=?", {
+      q: "select * from rss where url='https://lunch.tokyo/feed'",
+      format: "json"
+    }, function(json) {
+      for (var i = 0; i < json.query.results.item.length; i++) {
+        if(i == max_length) break;
+
+        var entry = json.query.results.item[i];
+
+        var title = entry.title;//記事タイトル
+        var link = entry.link; //記事へのリンク
+        var fulldate = entry.date; //投稿日
+
+        date = fulldate.split('T');
+
+        //htmlを整形
+        $('#feed').append('<dl><dt>' + date[0] + '</dt><dd><a href="' + link  +'">' + title +'</dd></dl>'); 
+
+      }
+    });
+  });
+</script>
 </head>
 <body>
 <header class="header">
@@ -27,6 +58,7 @@
     <div class="btn01">
       <p><a href="https://lunch.tokyo/" target="_blank" title="東京ランチ">東京ランチはこちら</a></p>
     </div>
+    <div id="feed"><!-- この位置に挿入される --></div>
   </div>
   <p class="scroll"><a href="#sec03"><span></span>Places I've been to</a></p>
 </section>
@@ -36,8 +68,5 @@
 <footer class="footer">
   <p class="copyright"><small>Copyright &copy; 2017 東京ランチ All Rights Reserved.</small></p>
 </footer><!-- /footer -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="lib/js/fitie.js"></script>
-<script src="lib/js/common.js"></script>
 </body>
 </html>
